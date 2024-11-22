@@ -9,7 +9,7 @@ contract EmployeeStorage {
     string public name; // Name of the employee (publicly accessible)
 
     // Constructor to initialize employee data when contract is deployed
-    constructor(uint16 _shares, string memory _name, uint32 _salary, uint _idNumber) {
+    constructor(uint16 _shares, string memory _name, uint32 _salary, uint256 _idNumber) {
         shares = _shares; // Initialize shares
         name = _name; // Initialize name
         salary = _salary; // Initialize salary
@@ -20,7 +20,7 @@ contract EmployeeStorage {
     function viewShares() public view returns (uint16) {
         return shares;
     }
-    
+
     // View function to retrieve the monthly salary of the employee
     function viewSalary() public view returns (uint32) {
         return salary;
@@ -28,7 +28,7 @@ contract EmployeeStorage {
 
     // Custom error declaration
     error TooManyShares(uint16 _shares);
-    
+
     // Function to grant additional shares to the employee
     function grantShares(uint16 _newShares) public {
         // Check if the requested shares exceed the limit
@@ -41,9 +41,9 @@ contract EmployeeStorage {
     }
 
     // Function used for testing packing of storage variables (not relevant to main functionality)
-    function checkForPacking(uint _slot) public view returns (uint r) {
+    function checkForPacking(uint256 _slot) public view returns (uint256 r) {
         assembly {
-            r := sload (_slot)
+            r := sload(_slot)
         }
     }
 
