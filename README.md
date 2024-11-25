@@ -83,10 +83,71 @@ Learn to Build Smart Contracts and Onchain Apps.
   forge create --rpc-url $BASE_SEPOLIA_RPC --private-key $PRIVATE_KEY <src/"Your Deploy Files":"Your Contract">
   ```
 
+  Example:
+
+  ```
+  forge create --rpc-url $BASE_SEPOLIA_RPC --private-key $PRIVATE_KEY src/BasicMath.sol:BasicMath
+  ```
+
 - For Deploy With Constructor Arguments
 
   ```
-  forge create --rpc-url $BASE_SEPOLIA_RPC --private-key $PRIVATE_KEY <src/"Your Deploy Files":"Your Contract"> --constructor-args "Arg 1" "Arg 2"
+  forge create --rpc-url $BASE_SEPOLIA_RPC --private-key $PRIVATE_KEY <src/"Your Deploy Files":"Your Contract"> --constructor-args "value 1" "value 2"
+  ```
+
+  Example:
+
+  ```
+  forge create --rpc-url $BASE_SEPOLIA_RPC --private-key $PRIVATE_KEY src/EmployeeStorage.sol:EmployeeStorage --constructor-args 1000 Pat 50000 112358132134
+  ```
+
+- For Basic Verify
+
+  ```
+  forge verify-contract <Your Contract Address> --chain $CHAIN <src/"Your Deploy Files":"Your Contract">
+  ```
+
+  Example:
+
+  ```
+  forge verify-contract 0xF1EaXXXXX --chain $CHAIN src/BasicMath.sol:BasicMath
+  ```
+
+- For Verify With Constructor Arguments
+
+  ```
+  forge verify-contract <Your Contract Address> --chain $CHAIN <src/"Your Deploy Files":"Your Contract"> --constructor-args $(cast abi-encode "constructor(data type, data type)" "value 1" "value 2")
+  ```
+
+  Example:
+
+  ```
+  forge verify-contract 0xF1EaXXXXX --chain $CHAIN src/EmployeeStorage.sol:EmployeeStorage --constructor-args $(cast abi-encode "constructor(uint16,string,uint32,uint256)" 1000 Pat 50000 112358132134)
+  ```
+
+## Other
+- Install The OpenZeppelin Library
+
+  ```
+  forge install OpenZeppelin/openzeppelin-contracts
+  ```
+
+- Export a Remapping in Our Directory to Help Locate The Library
+
+  ```
+  forge remappings > remappings.txt
+  ```
+
+- Flag Indicating Whether to Flatten The Source Code Before Verifying
+
+  ```
+  --flatten
+  ```
+
+- Wait For Verification Result After Submission
+
+  ```
+  --watch
   ```
 
 ## Follow Airdrop Infinity 🌐
