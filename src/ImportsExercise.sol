@@ -3,7 +3,7 @@
 // Importing the SillyStringUtils library
 import "../utils/SillyStringUtils.sol";
 
-pragma solidity 0.8.23;
+pragma solidity ^0.8.23;
 
 contract ImportsExercise {
     // Using the SillyStringUtils library for string manipulation
